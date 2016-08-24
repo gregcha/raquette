@@ -1,0 +1,49 @@
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+div,
+span,
+a,
+input,
+select,
+textarea,
+button {
+  outline: none !important;
+}
+
+div:focus,
+span:focus,
+a:focus,
+input:focus,
+select:focus,
+textarea:focus,
+button:focus,
+a:focus {
+  outline: none !important;
+  text-decoration: none !important;
+}
+
+div:active,
+span:active,
+a:active,
+input:active,
+select:active,
+textarea:active,
+button:active {
+    outline: none !important;
+    text-decoration: none !important;
+}
+
+div:visited,
+span:visited,
+a:visited,
+input:visited,
+select:visited,
+textarea:visited,
+button:visited {
+    outline: none !important;
+    text-decoration: none !important;
+}

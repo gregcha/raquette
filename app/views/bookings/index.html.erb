@@ -1,0 +1,15 @@
+<% if @active_bookings.empty? %>
+  <h3>Vous n'avez pas de réservation à venir</h3>
+  <%= link_to 'Réserver', new_query_path, class:'btn btn-success' %>
+  <%= link_to 'Retour', page_path('home'), class:'btn btn-default' %>
+<% else %>
+  <% @active_bookings.each do |b| %>
+    <h3><%= b.venue.name + ' - Court n°' + b.court.court_number.to_s %></h3>
+    <p><%= ' Le ' + b.date + ' à ' + b.hour + 'h'  %></p>
+    <p><%= 'Réservé avec le compte de ' + b.account.first_name + ' ' + b.account.last_name  %></p>
+    <%= link_to 'Supprimer', booking_path(b), method: :delete, class:'btn btn-danger' %>
+  <% end %>
+  <div>
+    <%= link_to 'Retour', page_path('home'), class:'btn btn-default' %>
+  </div>
+<% end %>

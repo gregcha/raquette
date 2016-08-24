@@ -1,0 +1,216 @@
+//------------------------------------
+//### BOOKING FORM - PARIS TENNIS ###
+//------------------------------------
+
+#form {
+  background: white;
+  border-radius: 3px;
+  margin-top: 50px
+}
+
+
+//--------
+// WHERE
+//--------
+
+#form-where-visible {
+  position: relative;
+  top: 42px;
+}
+
+.form-where-visible-option {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 3px;
+  padding-left: 0px;
+  padding-right: 0px;
+  margin: 0 10px;
+  background: $white;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
+.form-where-visible-option-selected {
+  background: $green;
+  color: white;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.form-where-hidden-option {
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.form-where-hidden-option-visible {
+  z-index: 1;
+}
+
+// SELECT TENNIS
+#tennisArrond + span.select2-container {
+  width: 100% !important;
+}
+
+#tennisArrond + span .select2-selection--single {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  max-height: 42px;
+  overflow-y: auto;
+}
+
+#tennisArrond + span .select2-selection__arrow {
+  top: 8px;
+  right: 10px;
+}
+
+// SELECT ARDTS
+#arrondissement + span.select2-container {
+  width: 100% !important;
+}
+
+#arrondissement + span .select2-selection--multiple {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  max-height: 42px;
+  overflow-y: auto;
+}
+
+#arrondissement + span .select2-selection--multiple .select2-selection__choice {
+  color: white;
+  font-weight: bold;
+  background: $green;
+  border: 2px solid white;
+  margin-top: 0px;
+}
+
+#arrondissement + span .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
+}
+
+#arrondissement + span .select2-selection--multiple .select2-search--inline {
+  display: none;
+}
+
+//--------
+// WHEN
+//--------
+
+// DATE
+#form-date {
+  margin-top: 20px;
+}
+
+.form-date-option {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  text-align: center;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
+.form-date-option p {
+  margin: 0px;
+}
+
+.form-date-option-selected {
+  color: white;
+  background: $green;
+  border-radius: 3px;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+// HOUR
+.form-hour-option {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  text-align: center;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
+.form-hour-option-selected {
+  background: $green;
+  color: white;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+//--------
+// MORE
+//--------
+
+#form-more {
+  margin-top: 25px;
+  margin-bottom: 50px;
+}
+
+// CHECKBOX
+.form-more-checkbox {
+  display: flex;
+  align-items: center;
+  align-items: left;
+  &:hover, &:active, &:focus {
+    text-decoration: none;
+  }
+}
+
+// SURFACE
+#revetement + span.select2-container {
+  width: 100% !important;
+}
+
+#revetement + span .select2-selection--single {
+  border: 1px solid $green;
+}
+
+#revetement + span .select2-selection__placeholder {
+  color: $black;
+}
+
+#revetement + span .select2-selection__rendered {
+  color: $green;
+}
+
+#revetement + span .select2-selection__rendered-selected {
+  color: $white;
+  background: $green;
+}
+
+//--------
+// SUBMIT
+//--------
+
+#form-submit {
+  height: 100px;
+  width: 100%;
+}
+
+#form-submit-button {
+  text-align: center;
+  height: 60%;
+  width: 100%;
+}
+
+
+
+
+

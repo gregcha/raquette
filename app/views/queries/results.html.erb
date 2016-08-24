@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col s12">
+      <%= link_to 'Nouvelle recherche', :back %>
+      <p><%= @available_courts.count %> courts disponibles</p>
+
+      <% @available_courts.each do |court_data| %>
+        <% court = Court.where(pt_court_id: court_data[:pt_court_id]).first %>
+        <h3><%= court.venue.name + ' - ' + court.venue.district.to_s + 'ème' %></h3>
+        <p>Court n°<%= court.court_number %> le <%= court_data[:date]%> à <%= court_data[:hour]%>h</p>
+        <%= form_tag bookings_path do %>
+          <%= hidden_field_tag :pt_court_id, court_data[:pt_court_id] %>
+          <%= hidden_field_tag :pt_id, court_data[:pt_id] %>
+          <%= hidden_field_tag :date, court_data[:date] %>
+          <%= hidden_field_tag :hour, court_data[:hour] %>
+          <%= hidden_field_tag :cle, court_data[:cle] %>
+          <%= hidden_field_tag :libelleReservation, court_data[:libelleReservation] %>
+          <%= select_tag :account_id, options_for_select(@my_accounts), class:'form-control' %>
+          <%= submit_tag "Réserver", class:'btn btn-success'  %>
+        <% end %>
+      <% end%>
+    </div>
+  </div>
+</div>

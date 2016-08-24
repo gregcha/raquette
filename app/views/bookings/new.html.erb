@@ -1,0 +1,11 @@
+<%= form_tag bookings_path do %>
+  <%= hidden_field_tag :pt_court_id, params[:pt_court_id] %>
+  <%= hidden_field_tag :pt_id, params[:pt_id] %>
+  <%= hidden_field_tag :date, params[:date] %>
+  <%= hidden_field_tag :hour, params[:hour] %>
+  <%= hidden_field_tag :cle, params[:cle] %>
+  <%= hidden_field_tag :libelleReservation, params[:libelleReservation] %>
+  <%= image_tag "/tmp/captcha.jpg" %>
+  <%= text_field_tag :jcaptcha_reponse %>
+  <%= submit_tag "Réserver", class:'btn btn-success'  %>
+<% end %>

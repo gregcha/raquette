@@ -1,0 +1,18 @@
+<%= link_to 'Retour', page_path('home'), class:"btn-medium back-button" %>
+
+<div class="page-title">
+  <div class='container'>
+    <div class='col-xs-10 col-xs-offset-1'>
+      <h3><%= @venues.where(available: true).count %> sur <%= @venues.count %> tennis ouverts à la réservation</h3>
+    </div>
+  </div>
+</div>
+
+<br>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-xs-10 col-xs-offset-1'>
+    </div>
+  </div>
+</div>
