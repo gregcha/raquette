@@ -62,7 +62,7 @@ class QueriesController < ApplicationController
   end
 
   def results
-    @available_courts = @@available_courts_array
+    @available_courts = @@available_courts_array.sort_by { |court| params[:sort] }
     @my_accounts = []
     current_user.accounts.collect do |account|
       if booking = Booking.where(account_id: account).first

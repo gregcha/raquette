@@ -106,7 +106,4 @@ class ApplicationController < ActionController::Base
     login_form.submit
   end
 
-
-
-
 end
