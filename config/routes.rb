@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     end
   end
   resources :accounts, only: [:index, :new, :create, :destroy]
-  resources :queries, only: [:create]
+  resources :results, only: [:index, :create]
   resources :bookings, only: [:new, :create, :destroy]
-  get 'results', to: 'queries#results'
 end

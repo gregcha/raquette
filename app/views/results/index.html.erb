@@ -10,7 +10,7 @@
 
   <!-- RESULTS -->
   <div class="column is-12 is-mobile">
-    <%= @available_courts.count %> courts disponibles</p>
+    <%= @results.count %> courts disponibles</p>
     <table>
       <tr>
         <th><%= link_to 'Tennis', sort: "pt_id" %></th>
@@ -18,21 +18,21 @@
         <th><%= link_to 'Date', sort: "date" %></th>
         <th><%= link_to 'Heure', sort: "hour" %></th>
       </tr>
-      <% @available_courts.each do |court_data| %>
+      <% @results.each do |result| %>
         <tr>
-          <% court = Court.where(pt_court_id: court_data[:pt_court_id]).first %>
+          <% court = Court.where(pt_court_id: result[:pt_court_id]).first %>
           <td><%= court.venue.name + ' - ' + court.venue.district.to_s + 'ème' %></td>
           <td>Court n°<%= court.court_number %></td>
-          <td><%= court_data[:date]%></td>
-          <td><%= court_data[:hour]%>h</td>
+          <td><%= result[:date]%></td>
+          <td><%= result[:hour]%>h</td>
           <td class='is-hidden'>
             <%= form_tag bookings_path do %>
-              <%= hidden_field_tag :pt_court_id, court_data[:pt_court_id] %>
-              <%= hidden_field_tag :pt_id, court_data[:pt_id] %>
-              <%= hidden_field_tag :date, court_data[:date] %>
-              <%= hidden_field_tag :hour, court_data[:hour] %>
-              <%= hidden_field_tag :cle, court_data[:cle] %>
-              <%= hidden_field_tag :libelleReservation, court_data[:libelleReservation] %>
+              <%= hidden_field_tag :pt_court_id, result[:pt_court_id] %>
+              <%= hidden_field_tag :pt_id, result[:pt_id] %>
+              <%= hidden_field_tag :date, result[:date] %>
+              <%= hidden_field_tag :hour, result[:hour] %>
+              <%= hidden_field_tag :cle, result[:cle] %>
+              <%= hidden_field_tag :libelleReservation, result[:libelleReservation] %>
               <%= select_tag :account_id, options_for_select(@my_accounts), class:'form-control' %>
               <%= submit_tag "Réserver", class:'btn btn-success'  %>
             <% end %>

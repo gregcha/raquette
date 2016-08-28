@@ -31,7 +31,7 @@ class BookingsController < ApplicationController
   def create
     account = Account.where(id: params[:account_id]).first
     login_paris_tennis(account.identifiant, account.password)
-    query_page = @@agent.get('https://teleservices.paris.fr/srtm/reservationCreneauInit.action')
+    query_page = @agent.get('https://teleservices.paris.fr/srtm/reservationCreneauInit.action')
     query_form = query_page.form('reservationCreneauCriteresForm')
     tennisArrond = Venue.where(pt_id: params[:pt_id]).first
     query_form.tennisArrond = tennisArrond.pt_name
@@ -40,14 +40,14 @@ class BookingsController < ApplicationController
     query_form.court = court.pt_court_and_venue_id
     query_form.dateDispo = params[:date]
     query_form.heureDispo = params[:hour][0..1]
-    @@agent.submit(query_form)
+    @agent.submit(query_form)
 
-    @@booking_page = @@agent.get('https://teleservices.paris.fr/srtm/reservationCreneauReserver.action')
+    @@booking_page = @agent.get('https://teleservices.paris.fr/srtm/reservationCreneauReserver.action')
     booking_form = @@booking_page.form('ReservationCreneauValidationForm')
 
     images = @@booking_page.search("#ImageCaptcha img")
     FileUtils.rm_rf(Dir.glob("#{Rails.root}/public/tmp/*"))
-    @@agent.get(images.first.attributes["src"]).save "#{Rails.root}/public/tmp/captcha.jpg"
+    @agent.get(images.first.attributes["src"]).save "#{Rails.root}/public/tmp/captcha.jpg"
     client = DeathByCaptcha.new('gregy17', 'paristenniscaptcha', :http)
     captcha = client.decode(path: "#{Rails.root}/public/tmp/captcha.jpg")
     booking_form.jcaptcha_reponse = captcha.text
@@ -55,7 +55,7 @@ class BookingsController < ApplicationController
     booking_form.libelleReservation = params[:libelleReservation]
     booking_form.cle = params[:cle]
     booking_form.rechercheElargie = ''
-    confirm_page = @@agent.submit(booking_form)
+    confirm_page = @agent.submit(booking_form)
 
     if confirm_page.search("td .style7").first.text.strip == "Confirmation de votre réservation"
       booking = Booking.new
@@ -79,7 +79,7 @@ class BookingsController < ApplicationController
     booking = Booking.where(id: params[:id]).first
     account = Account.where(id: booking.account_id).first
     login_paris_tennis(account.identifiant, account.password)
-    @@agent.get('https://teleservices.paris.fr/srtm/reservationCreneauSuppressionReservation.action')
+    @agent.get('https://teleservices.paris.fr/srtm/reservationCreneauSuppressionReservation.action')
     booking.destroy
     redirect_to page_path('home'), :notice => "Votre réservation est bien supprimée"
   end

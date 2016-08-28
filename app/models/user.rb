@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 
   has_many :accounts
   has_many :bookings
+  has_many :results
   acts_as_voter
 
   # Include default devise modules. Others available are:

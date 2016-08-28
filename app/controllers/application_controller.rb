@@ -43,7 +43,7 @@ class ApplicationController < ActionController::Base
     accounts = Account.where(user_id: current_user)
     accounts.each do |a|
       login_paris_tennis(a.identifiant, a.password)
-      welcome_page = @@agent.get('https://teleservices.paris.fr/srtm/reservationAccueil.action')
+      welcome_page = @agent.get('https://teleservices.paris.fr/srtm/reservationAccueil.action')
       if welcome_page.form('srtmForm')
         raw_booking_data = welcome_page.form('srtmForm').cle
         match_data = raw_booking_data.match(/(.+@)(\d{2}\/\d{2}\/\d{4})\s(\d{2}):\d{2}(.+)/)
@@ -98,8 +98,8 @@ class ApplicationController < ActionController::Base
   end
 
   def login_paris_tennis(identifiant, password)
-    @@agent = Mechanize.new
-    login_page = @@agent.get('https://teleservices.paris.fr/srtm/jsp/web/index.jsp')
+    @agent = Mechanize.new
+    login_page = @agent.get('https://teleservices.paris.fr/srtm/jsp/web/index.jsp')
     login_form = login_page.form('authentificationConnexionForm')
     login_form.login = identifiant
     login_form.password = password
