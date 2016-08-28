@@ -6,17 +6,17 @@
 </div>
 
 <div class='column is-half is-offset-one-quarter is-mobile'>
-  <%= link_to 'Nouvelle recherche', :back %>
+  <%= link_to 'Nouvelle recherche', page_path('home') %>
 
   <!-- RESULTS -->
   <div class="column is-12 is-mobile">
     <%= @results.count %> courts disponibles</p>
     <table>
       <tr>
-        <th><%= link_to 'Tennis', sort: "pt_id" %></th>
-        <th><%= link_to 'Court', sort: "pt_court_id" %></th>
-        <th><%= link_to 'Date', sort: "date" %></th>
-        <th><%= link_to 'Heure', sort: "hour" %></th>
+        <th><%= sortable "pt_id", 'Tennis' %></th>
+        <th><%= sortable "pt_court_id", 'Court' %></th>
+        <th><%= sortable "date", 'Date' %></th>
+        <th><%= sortable "hour", 'Heure' %></th>
       </tr>
       <% @results.each do |result| %>
         <tr>

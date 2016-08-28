@@ -1,13 +1,13 @@
 class ResultsController < ApplicationController
 
   def index
-    @results = Result.where(user_id: current_user.id).sort_by { |result| result[params[:sort]]}
+    @results = Result.where(user_id: current_user.id).sort_by { |result| result[params[:sort]] }
     get_user_accounts_and_status
   end
 
   def create
     previous_results = Result.where(user_id: current_user.id)
-    previous_results.destroy_all unless previous_results.empty?
+    previous_results.destroy_all if previous_results
 
     accounts = Account.where(user_id: current_user)
     if accounts.first.nil?
