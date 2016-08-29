@@ -5,9 +5,49 @@
   </div>
 </div>
 
+
 <div class='column is-half is-offset-one-quarter is-mobile'>
   <%= link_to 'Nouvelle recherche', page_path('home') %>
+  <!-- RESULTS -->
+  <div class="column is-12 is-mobile">
+    <%= @results.count %> courts disponibles</p>
 
+    <% @results_by_venue_by_hour.each do |venue, results_by_hour| %>
+      <div class='grouped_results'>
+        <h4><%= venue %></h4>
+        <table>
+          <% results_by_hour.each do |hour, results| %>
+            <tr>
+              <td><%= hour %></td>
+              <% results.each do |result| %>
+                <td>Court n°<%= result.court.court_number %></td>
+              <% end%>
+            </tr>
+          <% end%>
+        </table>
+      </div>
+    <% end%>
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class='column is-half is-offset-one-quarter is-mobile is-hidden'>
+  <%= link_to 'Nouvelle recherche', page_path('home') %>
   <!-- RESULTS -->
   <div class="column is-12 is-mobile">
     <%= @results.count %> courts disponibles</p>
@@ -40,7 +80,5 @@
         </tr>
       <% end%>
     </table>
-
   </div>
-
 </div>

@@ -21,6 +21,7 @@
 #
 
 class Venue < ActiveRecord::Base
+  has_many :results
   has_many :bookings
   has_many :courts
   has_many :pictures

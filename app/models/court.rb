@@ -24,6 +24,7 @@
 #
 
 class Court < ActiveRecord::Base
+  has_many :results
   has_many :bookings
   belongs_to :venue
 end

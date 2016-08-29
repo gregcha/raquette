@@ -1,7 +1,16 @@
 class ResultsController < ApplicationController
 
   def index
-    @results = Result.where(user_id: current_user.id).sort_by { |result| result[params[:sort]] }
+    @results = Result.where(user_id: current_user.id)
+    # results_by_hour = @results.group_by { |result| result.hour }
+    # @grouped_results = @results_by_hour.group_by { |result_by_hour| result.venue.name }
+
+
+    results_by_venue = @results.group_by { |r| r.venue.name }
+    @results_by_venue_by_hour = results_by_venue.map do |venue, results|
+      [venue, results.group_by{ |r| r.hour }]
+    end.to_h
+
     get_user_accounts_and_status
   end
 
@@ -48,13 +57,16 @@ class ResultsController < ApplicationController
         match_data = string.match(/(\d+@)(\d{2}\/\d{2}\/\d{4})\s(\d{2})h\d{2}([@|\d]+)/)
         info_booking = string.match(/'(.+)','\/srtm','(.+)'/)
         pt_id = match_data[4]
+        court = Court.where(pt_court_id: match_data[1]).first
         result = Result.new(
           pt_court_id: match_data[1],
           date: match_data[2],
           hour: match_data[3],
           pt_id: match_data[4],
           cle: info_booking[1],
-          libelleReservation: info_booking[2]
+          libelleReservation: info_booking[2],
+          venue_id: court.venue_id,
+          court_id: court.id
         )
         result.user_id = current_user.id
         result.save
