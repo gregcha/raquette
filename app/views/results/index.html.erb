@@ -1,39 +1,48 @@
-<div class="container">
-  <div class="row">
-    <div class="col s12">
-    </div>
-  </div>
-</div>
-
-
 <div class='column is-half is-offset-one-quarter is-mobile'>
   <%= link_to 'Nouvelle recherche', page_path('home') %>
-  <!-- RESULTS -->
-  <div class="column is-12 is-mobile">
-    <%= @results.count %> courts disponibles</p>
-
-    <% @results_by_venue_by_hour.each do |venue, results_by_hour| %>
-      <div class='grouped_results'>
-        <h4><%= venue %></h4>
-        <table>
-          <% results_by_hour.each do |hour, results| %>
-            <tr>
-              <td><%= hour %></td>
-              <% results.each do |result| %>
-                <td>Court n°<%= result.court.court_number %></td>
-              <% end%>
-            </tr>
-          <% end%>
-        </table>
-      </div>
-    <% end%>
-
-  </div>
 </div>
 
 
-
-
+<!-- RESULTS -->
+<div class="column is-half is-offset-one-quarter is-mobile">
+  <%= @results.count %> courts disponibles</p>
+  <% @results_by_venue.each do |venue, results_by_date| %>
+    <div class="card is-fullwidth results-by-venue">
+      <header class="card-header">
+        <p class="card-header-title">
+          <%= venue %>
+        </p>
+        <a class="card-header-icon">
+          <i class="fa fa-angle-up"></i>
+        </a>
+      </header>
+        <% results_by_date.each do |date, results_by_hour| %>
+          <div class="card-content">
+            <div class="content">
+            <%= I18n.localize(Date.new(date.split("/")[2].to_i, date.split("/")[1].to_i, date.split("/")[0].to_i), format: "%A %d %B") %>
+              <div class='column is-fullwidth'>
+                <% results_by_hour.each do |hour, results| %>
+                  <div class='columns results-by-hour'>
+                    <div class='column is-1 results-hour'>
+                      <%= hour %>h
+                    </div>
+                    <div class='column is-11'>
+                      <% results.each do |result| %>
+                        <span class="tag is-medium result-court-number result-court-number-<%= result.court.court_number  %>">
+                          <%= result.court.court_number %>
+                        </span>
+                      <% end%>
+                    </div>
+                  </div>
+                <% end%>
+              </div>
+            </div>
+          </div>
+        <% end%>
+      </table>
+    </div>
+  <% end%>
+</div>
 
 
 

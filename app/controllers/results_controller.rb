@@ -2,16 +2,16 @@ class ResultsController < ApplicationController
 
   def index
     @results = Result.where(user_id: current_user.id)
-    # results_by_hour = @results.group_by { |result| result.hour }
-    # @grouped_results = @results_by_hour.group_by { |result_by_hour| result.venue.name }
 
-
-    results_by_venue = @results.group_by { |r| r.venue.name }
-    @results_by_venue_by_hour = results_by_venue.map do |venue, results|
-      [venue, results.group_by{ |r| r.hour }]
+    #group results by venue then by date then by hour
+    @results_by_venue = @results.group_by { |r| r.venue.name }.map do |venue, results|
+      [venue, results.group_by { |r| r.date }.map do |date, results|
+        [date, results.group_by { |r| r.hour}]
+      end.to_h]
     end.to_h
 
     get_user_accounts_and_status
+
   end
 
   def create
