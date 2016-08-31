@@ -22,6 +22,9 @@
 
 class VenuesController < ApplicationController
 
+  skip_before_filter :authenticate_user!
+  skip_before_filter :next_seven_days
+
   def index
     @venues = Venue.all
   end

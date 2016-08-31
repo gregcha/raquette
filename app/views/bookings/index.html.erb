@@ -1,7 +1,5 @@
 <% if @active_bookings.empty? %>
   <h3>Vous n'avez pas de réservation à venir</h3>
-  <%= link_to 'Réserver', new_query_path, class:'btn btn-success' %>
-  <%= link_to 'Retour', page_path('home'), class:'btn btn-default' %>
 <% else %>
   <% @active_bookings.each do |b| %>
     <h3><%= b.venue.name + ' - Court n°' + b.court.court_number.to_s %></h3>

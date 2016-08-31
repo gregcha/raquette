@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160829205510) do
+ActiveRecord::Schema.define(version: 20160831135917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,11 +41,12 @@ ActiveRecord::Schema.define(version: 20160829205510) do
     t.integer  "court_id"
     t.string   "date"
     t.string   "hour"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "user_id"
     t.integer  "account_id"
     t.integer  "venue_id"
+    t.string   "pt_court_id"
     t.index ["account_id"], name: "index_bookings_on_account_id", using: :btree
     t.index ["court_id"], name: "index_bookings_on_court_id", using: :btree
     t.index ["user_id"], name: "index_bookings_on_user_id", using: :btree

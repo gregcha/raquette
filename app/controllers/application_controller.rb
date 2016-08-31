@@ -39,7 +39,6 @@ class ApplicationController < ActionController::Base
   end
 
   def update_user_bookings
-    all_bookings = Booking.where(user_id: current_user)
     accounts = Account.where(user_id: current_user)
     accounts.each do |a|
       login_paris_tennis(a.identifiant, a.password)
@@ -56,43 +55,30 @@ class ApplicationController < ActionController::Base
           patched_pt_id = ["@14@45@53@53","@9@91@76@26","@12@141@212@41","@17@202@431@70","@9@102@218@28","@14@82@326@56","@17@189@23@70","@11@261@258@37"]
           pt_id = patched_pt_id[index] if b == pt_id
         end
-        if all_bookings.empty?
+        already_in_db = Booking.where(user_id: current_user, account_id: a, pt_court_id: pt_court_id, date: date, hour: hour).first
+        if already_in_db.nil?
           booking = Booking.new
           booking.user_id = current_user.id
           booking.account_id = a.id
-          booked_venue = Venue.where(pt_id: pt_id)
-          booking.venue_id = booked_venue.first.id
-          booked_court = Court.where(pt_court_id: pt_court_id)
-          booking.court_id = booked_court.first.id
+          booked_venue = Venue.where(pt_id: pt_id).first
+          booking.venue_id = booked_venue.id
+          booked_court = Court.where(pt_court_id: pt_court_id).first
+          booking.court_id = booked_court.id
+          booking.pt_court_id = pt_court_id
           booking.date = date
           booking.hour = hour
           booking.save
-        else
-          all_bookings.each do |b|
-            if date != b.date && hour != b.hour && pt_court_id != b.pt_court_id
-              booking = Booking.new
-              booking.user_id = current_user.id
-              booking.account_id = a.id
-              booked_venue = Venue.where(pt_id: pt_id)
-              booking.venue_id = booked_venue.first.id
-              booked_court = Court.where(pt_court_id: pt_court_id)
-              booking.court_id = booked_court.first.id
-              booking.date = date
-              booking.hour = hour
-              booking.save
-            end
-          end
         end
       end
     end
-    updated_bookings = Booking.where(user_id: current_user)
+    all_bookings = Booking.where(user_id: current_user)
     @active_bookings = []
-    updated_bookings.each do |b|
-      date = b.date.split("/")
-      hour = b.hour
+    all_bookings.each do |booking|
+      date = booking.date.split("/")
+      hour = booking.hour
       timestamp = Time.new(date[2], date[1], date[0], hour)
       if timestamp > Time.now
-        @active_bookings << b
+        @active_bookings << booking
       end
     end
   end

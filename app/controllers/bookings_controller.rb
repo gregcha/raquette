@@ -26,7 +26,10 @@
 
 class BookingsController < ApplicationController
 
-  skip_before_filter :update_user_bookings
+  skip_before_filter :update_user_bookings, except: :index
+
+  def index
+  end
 
   def create
     account = Account.where(id: params[:account_id]).first

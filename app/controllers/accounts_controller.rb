@@ -66,7 +66,9 @@ class AccountsController < ApplicationController
 
   def destroy
     account = Account.find(params[:id])
+    bookings = Booking.where(account_id: account)
     account.destroy
+    bookings.destroy_all
     redirect_to accounts_path
   end
 
