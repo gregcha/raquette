@@ -10,7 +10,8 @@
   align-items: center
   display: flex
   justify-content: center
-  padding: 10px 20px
+  padding: 10px
+  min-width: 5%
   a
     flex-grow: 1
   img
@@ -28,10 +29,9 @@
 
 .nav-item a,
 a.nav-item
-  color: $text
+  color: $blue-dark
   text-transform: uppercase
-  font-weight: 700
-  font-size: 14px
+  font-weight: $weight-bold
   &:hover
     color: $link-hover
   // Modifiers
@@ -49,11 +49,6 @@ a.nav-item
       border-bottom: 3px solid $link
       border-top: 3px solid transparent
       color: $link
-
-#navbar-reservation-count
-  background: $green
-  display: flex
-  align-items: center
 
 // Containers
 
@@ -107,6 +102,7 @@ a.nav-item
   align-items: stretch
   background-color: $white
   display: flex
+  justify-content: center
   min-height: $nav-height
   position: relative
   text-align: center
@@ -115,7 +111,7 @@ a.nav-item
     align-items: stretch
     display: flex
     min-height: $nav-height
-    width: 100%
+    // width: 100%
     & > .nav-left
       & > .nav-item:first-child:not(.is-tab)
         padding-left: 0

@@ -1,21 +1,35 @@
+<div class="overlay">
+  <nav role="navigation">
+    <a href="#" class="toggler">Toggle nav</a>
+    <ul>
+      <li><a href="#">jQuery Plugins</a></li>
+      <li><a href="#">Featured Plugins</a></li>
+      <li><a href="#">Popular Plugins</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+</div>
+
+
 <div class='container-fluid'>
   <nav class="nav">
     <% if current_user %>
       <div class="nav-left">
-        <%= link_to 'Accueil', page_path('home'), class:'nav-item' %>
+        <%= link_to 'Accueil', page_path('home'), class:"nav-item" %>
+        <span class='nav-item navbar-separator'>|</span>
         <%= link_to 'Les tennis', venues_path, class:'nav-item' %>
       </div>
+
       <div class="nav-center">
         <%= link_to page_path('home'), class:"nav-item is-brand" do %>
-          <%= image_tag "logo.svg", id:'navbar-logo' %>
+          <%= image_tag "logo.svg" %>
         <% end %>
       </div>
-      <span class="nav-toggle" id="nav-toggle">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
-      <div class="nav-right nav-menu">
+      <a href="#" class="toggler nav-item">Toggle nav</a>
+
+      <div class="nav-right">
+        <%= link_to 'Mes comptes', accounts_path, class:'nav-item' %>
+        <span class='nav-item navbar-separator'>|</span>
         <%= link_to bookings_path, class:'nav-item' do %>
           Mes réservations
           <% unless @active_bookings.empty? %>
@@ -24,12 +38,13 @@
             </span>
           <% end %>
         <% end %>
-        <%= link_to 'Mes comptes', accounts_path, class:'nav-item' %>
       </div>
+
+
     <% else %>
       <div class="nav-left">
-        <%= link_to page_path('home'), class:"nav-item is-brand" do %>
-          <%= image_tag "logo.svg", id:'navbar-logo' %>
+        <%= link_to page_path('home'), class:"nav-item is-brand navbar-logo" do %>
+          <%= image_tag "logo.svg" %>
         <% end %>
       </div>
       <div class="nav-center"></div>
@@ -40,5 +55,6 @@
         <%= link_to "S'inscrire", new_user_registration_path, class:'nav-item button is-success' %>
       </div>
     <% end %>
+
   </nav>
 </div>
