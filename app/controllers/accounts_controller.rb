@@ -46,7 +46,7 @@ class AccountsController < ApplicationController
         flash[:notice] = "Compte ajouté avec succès"
         @accounts = Account.where(user_id: current_user.id)
       else
-        @error = "Compte invalide"
+        flash[:notice] = "Compte invalide"
         @accounts = Account.where(user_id: current_user.id)
       end
     else
