@@ -61,16 +61,16 @@ class BookingsController < ApplicationController
     confirm_page = @agent.submit(booking_form)
 
     if confirm_page.search("td .style7").first.text.strip == "Confirmation de votre réservation"
-      booking = Booking.new
-      booking.user_id = current_user.id
-      booking.account_id = params[:account_id]
-      booked_venue = Venue.where(pt_id: params[:pt_id])
-      booking.venue_id = booked_venue.first.id
-      booked_court = Court.where(pt_court_id: params[:pt_court_id])
-      booking.court_id = booked_court.first.id
-      booking.date = params[:date]
-      booking.hour = params[:hour][0..1].to_i.to_s
-      booking.save
+      # booking = Booking.new
+      # booking.user_id = current_user.id
+      # booking.account_id = params[:account_id]
+      # booked_venue = Venue.where(pt_id: params[:pt_id])
+      # booking.venue_id = booked_venue.first.id
+      # booked_court = Court.where(pt_court_id: params[:pt_court_id])
+      # booking.court_id = booked_court.first.id
+      # booking.date = params[:date]
+      # booking.hour = params[:hour][0..1].to_i.to_s
+      # booking.save
       redirect_to page_path('home'), :notice => "Votre réservation est bien enregistrée"
     else
       flash[:alert] = "Désolé une erreur s'est produite"
@@ -82,9 +82,12 @@ class BookingsController < ApplicationController
     booking = Booking.where(id: params[:id]).first
     account = Account.where(id: booking.account_id).first
     login_paris_tennis(account.identifiant, account.password)
-    @agent.get('https://teleservices.paris.fr/srtm/reservationCreneauSuppressionReservation.action')
-    booking.destroy
-    redirect_to page_path('home'), :notice => "Votre réservation est bien supprimée"
+    confirm_page = @agent.get('https://teleservices.paris.fr/srtm/reservationCreneauSuppressionReservation.action')
+    if confirm_page.search("span.erreur ul li").nil?
+      redirect_to page_path('home'), :notice => "Votre réservation est bien supprimée"
+    else
+      redirect_to :back, :alert => "Vous ne pouvez plus annuler cette réservation"
+    end
   end
 
 end

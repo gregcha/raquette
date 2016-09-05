@@ -69,6 +69,10 @@ class ApplicationController < ActionController::Base
           booking.hour = hour
           booking.save
         end
+      else
+        today = Date.today.to_s.split('-').reverse.join('/')
+        removed_meantime = Booking.where(user_id: current_user, account_id: a).where('date >?', today).first
+        removed_meantime.destroy unless removed_meantime.nil?
       end
     end
     all_bookings = Booking.where(user_id: current_user)
