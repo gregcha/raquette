@@ -28,9 +28,22 @@
                     </div>
                     <div class='column is-11'>
                       <% results.each do |result| %>
-                        <span class="tag is-medium result-court-number result-court-number-<%= result.court.court_number  %>">
-                          <%= result.court.court_number %>
+                        <span class="result-court-number-<%= result.court.court_number %> result-court-number tag is-medium open-toggler ">
+                            <%= result.court.court_number %>
                         </span>
+
+                        <div class='is-hidden'>
+                          <%= form_tag bookings_path do %>
+                            <%= hidden_field_tag :pt_court_id, result.pt_court_id %>
+                            <%= hidden_field_tag :pt_id, result.pt_id %>
+                            <%= hidden_field_tag :date, result.date %>
+                            <%= hidden_field_tag :hour, result.hour %>
+                            <%= hidden_field_tag :cle, result.cle %>
+                            <%= hidden_field_tag :libelleReservation, result.libelleReservation %>
+                            <%= text_field_tag :account_id %>
+                            <%= submit_tag 'Réserver', id:'submit-booking'  %>
+                          <% end %>
+                        </div>
                       <% end%>
                     </div>
                   </div>
@@ -48,6 +61,21 @@
 
 
 
+
+<div class="overlay">
+  <nav role="navigation">
+  <a href="#" class="close-toggler">Toggle nav</a>
+    <ul>
+      <% @my_accounts.each do |account| %>
+        <li>
+          <a href="#" class="close-toggler">
+            <%= account[0] %>
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  </nav>
+</div>
 
 
 
