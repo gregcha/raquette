@@ -46,14 +46,15 @@ $(document).ready(function(){
         }
       });
 
-    var $color = $overlay.attr('class').split(' ')[1];
+
     $overlay
       .velocity('stop')
       .velocity('fadeOut', {
         duration: 200
-      })
-      .removeClass($color);
+      });
 
+    var $color = $overlay.attr('class').split(' ')[1];
+    $overlay.removeClass($color);
     $('#fullscreen-libelleReservation').html('');
   });
 
