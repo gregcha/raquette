@@ -11,6 +11,7 @@ $(document).ready(function(){
   }, 0);
 
   $('.open-toggler').click(function(){
+    $('#fullscreen-libelleReservation').html($(this).next('.is-hidden').children('form').children('#libelleReservation').val());
     var $color = $(this).attr('class').split(' ')[0];
     $overlay
       .addClass($color)
@@ -52,6 +53,15 @@ $(document).ready(function(){
         duration: 200
       })
       .removeClass($color);
+
+    $('#fullscreen-libelleReservation').html('');
+  });
+
+  $('.book-the-court').click(function(){
+    var $selected_account = $(this).attr('selected_account');
+    var $marker = $('#fullscreen-libelleReservation').html();
+    $( "input[value='" + $marker + "']" ).next().val($selected_account);
+    $( "input[value='" + $marker + "']" ).next().next().trigger('click');
   });
 
 });

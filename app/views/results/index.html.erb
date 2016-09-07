@@ -31,7 +31,6 @@
                         <span class="result-court-number-<%= result.court.court_number %> result-court-number tag is-medium open-toggler ">
                             <%= result.court.court_number %>
                         </span>
-
                         <div class='is-hidden'>
                           <%= form_tag bookings_path do %>
                             <%= hidden_field_tag :pt_court_id, result.pt_court_id %>
@@ -58,64 +57,21 @@
 </div>
 
 
-
-
-
-
 <div class="overlay">
   <nav role="navigation">
-  <a href="#" class="close-toggler">Toggle nav</a>
+    <a href="#" class="close-toggler has-text-centered">
+      <i class="fa fa-times-circle" aria-hidden="true"></i>
+    </a>
+    <p class="has-text-centered" id='fullscreen-libelleReservation'></p>
     <ul>
+      Choisir le compte avec lequel réserver
       <% @my_accounts.each do |account| %>
         <li>
-          <a href="#" class="close-toggler">
+          <%= link_to '#', selected_account: account[1], class:'book-the-court' do %>
             <%= account[0] %>
-          </a>
+          <% end %>
         </li>
       <% end %>
     </ul>
   </nav>
-</div>
-
-
-
-
-
-
-
-<div class='column is-half is-offset-one-quarter is-mobile is-hidden'>
-  <%= link_to 'Nouvelle recherche', page_path('home') %>
-  <!-- RESULTS -->
-  <div class="column is-12 is-mobile">
-    <%= @results.count %> courts disponibles</p>
-    <table>
-      <tr>
-        <th><%= sortable "pt_id", 'Tennis' %></th>
-        <th><%= sortable "pt_court_id", 'Court' %></th>
-        <th><%= sortable "date", 'Date' %></th>
-        <th><%= sortable "hour", 'Heure' %></th>
-      </tr>
-      <% @results.each do |result| %>
-        <tr>
-          <% court = Court.where(pt_court_id: result[:pt_court_id]).first %>
-          <td><%= court.venue.name + ' - ' + court.venue.district.to_s + 'ème' %></td>
-          <td>Court n°<%= court.court_number %></td>
-          <td><%= result[:date]%></td>
-          <td><%= result[:hour]%>h</td>
-          <td class='is-hidden'>
-            <%= form_tag bookings_path do %>
-              <%= hidden_field_tag :pt_court_id, result[:pt_court_id] %>
-              <%= hidden_field_tag :pt_id, result[:pt_id] %>
-              <%= hidden_field_tag :date, result[:date] %>
-              <%= hidden_field_tag :hour, result[:hour] %>
-              <%= hidden_field_tag :cle, result[:cle] %>
-              <%= hidden_field_tag :libelleReservation, result[:libelleReservation] %>
-              <%= select_tag :account_id, options_for_select(@my_accounts), class:'form-control' %>
-              <%= submit_tag "Réserver", class:'btn btn-success'  %>
-            <% end %>
-          </td>
-        </tr>
-      <% end%>
-    </table>
-  </div>
 </div>
