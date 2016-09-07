@@ -89,12 +89,12 @@ class ResultsController < ApplicationController
         hour = booking.hour
         timestamp = Time.new(date[2], date[1], date[0], hour)
         if timestamp > Time.now
-          @my_accounts << [account.first_name + ' ' + account.last_name + ' - 1 réservation en cours', account.id]
+          @my_accounts << [account.first_name + ' ' + account.last_name, account.id, true]
         else
-          @my_accounts << [account.first_name + ' ' + account.last_name + ' - Aucune réservation en cours', account.id]
+          @my_accounts << [account.first_name + ' ' + account.last_name, account.id, false]
         end
       else
-        @my_accounts << [account.first_name + ' ' + account.last_name + ' - Aucune réservation en cours', account.id]
+        @my_accounts << [account.first_name + ' ' + account.last_name, account.id, false]
       end
     end
   end

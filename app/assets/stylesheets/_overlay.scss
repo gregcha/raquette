@@ -37,10 +37,29 @@
 }
 .overlay a {
   font-size: 40px;
-  line-height: 40px;
-  display: block;
+  line-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: #fff;
   text-transform: uppercase;
   padding: 8px 0;
   text-decoration: none;
+  &.close-toggler {
+    justify-content: center;
+    .fa {
+      font-size: 60px;
+    }
+  }
+}
+
+#overlay-libelleReservation {
+  color: $white;
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.warning-active-booking {
+  font-size: 30px;
+  margin-left: 20px;
 }

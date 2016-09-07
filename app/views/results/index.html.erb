@@ -2,7 +2,6 @@
   <%= link_to 'Nouvelle recherche', page_path('home') %>
 </div>
 
-
 <!-- RESULTS -->
 <div class="column is-half is-offset-one-quarter is-mobile">
   <%= @results.count %> créneaux disponibles</p>
@@ -56,19 +55,21 @@
   <% end%>
 </div>
 
-
+<!-- OVERLAY -->
 <div class="overlay">
   <nav role="navigation">
-    <a href="#" class="close-toggler has-text-centered">
-      <i class="fa fa-times-circle" aria-hidden="true"></i>
-    </a>
-    <p class="has-text-centered" id='fullscreen-libelleReservation'></p>
     <ul>
-      Choisir le compte avec lequel réserver
+      <a href="#" class="close-toggler has-text-centered">
+        <i class="fa fa-times-circle" aria-hidden="true"></i>
+      </a>
+      <p class="has-text-centered" id='overlay-libelleReservation'></p>
       <% @my_accounts.each do |account| %>
         <li>
           <%= link_to '#', selected_account: account[1], class:'book-the-court' do %>
             <%= account[0] %>
+            <% if account[2] == true %>
+              <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            <% end %>
           <% end %>
         </li>
       <% end %>

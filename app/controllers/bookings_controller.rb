@@ -84,7 +84,7 @@ class BookingsController < ApplicationController
     account = Account.where(id: booking.account_id).first
     login_paris_tennis(account.identifiant, account.password)
     confirm_page = @agent.get('https://teleservices.paris.fr/srtm/reservationCreneauSuppressionReservation.action')
-    if confirm_page.search("span.erreur ul li").nil?
+    if confirm_page.search("span.erreur ul li").empty?
       redirect_to page_path('home'), :notice => "Votre réservation est bien supprimée"
     else
       redirect_to :back, :alert => "Vous ne pouvez plus annuler cette réservation"
