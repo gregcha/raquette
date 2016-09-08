@@ -1,12 +1,23 @@
-.navbar-logo {
-  width: 60px;
-  max-height: 100%;
-  padding-left: 30px;
-  padding-right: 30px;
+.navbar {
+  background: $white;
 }
 
-.navbar-separator {
-  color: $green;
+.navbar-contents {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.navbar-item {
+  color: $blue-dark;
+  text-transform: uppercase;
+  font-weight: $weight-bold;
+}
+
+.navbar-logo {
+  max-width: 50px;
+  align-self: center;
 }
 
 #navbar-reservation-count {
