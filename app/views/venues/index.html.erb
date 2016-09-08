@@ -1,18 +1,23 @@
-<%= link_to 'Retour', page_path('home'), class:"btn-medium back-button" %>
 
-<div class="page-title">
-  <div class='container'>
-    <div class='col-xs-10 col-xs-offset-1'>
-      <h3><%= @venues.where(available: true).count %> sur <%= @venues.count %> tennis ouverts à la réservation</h3>
-    </div>
+  <%= @venues.where(available: true).count %> sur <%= @venues.count %> tennis ouverts à la réservation
+
+  <div class='column venues-cards-container'>
+    <% @venues.each do |venue| %>
+      <div class="venue-card">
+        <div class="venue-card-image">
+          <figure class="image is-4by3">
+            <% image_tag venue.pictures.first.picture_path %>
+            <%= image_tag venue.name + '.svg' %>
+          </figure>
+        </div>
+        <div class="venue-card-content">
+          <h2><%= venue.name %></h2>
+          <%= link_to 'https://www.google.fr/maps/search/'+ venue.address, target:'blank' do %>
+            <p><%= venue.street %>   </p>
+            <i class="fa fa-external-link is-small" aria-hidden="true"></i>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
   </div>
-</div>
 
-<br>
-
-<div class='container'>
-  <div class='row'>
-    <div class='col-xs-10 col-xs-offset-1'>
-    </div>
-  </div>
-</div>

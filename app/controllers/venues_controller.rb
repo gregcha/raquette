@@ -29,18 +29,4 @@ class VenuesController < ApplicationController
     @venues = Venue.all
   end
 
-  def show
-    @venue = Venue.find(params[:id])
-  end
-
-  def upvote
-    @venue = Venue.find(params[:id])
-    if current_user.voted_for? @venue
-      current_user.unvote_for @venue
-    else
-      current_user.up_votes @venue
-    end
-
-  end
-
 end
