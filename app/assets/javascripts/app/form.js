@@ -18,7 +18,9 @@ $(document).ready(function() {
 
   // SELECT TENNIS
 
-  $('#tennisArrond').select2();
+  $('#tennisArrond').select2({
+    placeholder:'Choisir tennis',
+  });
   $("#tennisArrond").select2("val", "[]");
 
   $('#form-where-visible-tennis').click(function() {
@@ -39,6 +41,7 @@ $(document).ready(function() {
   // SELECT ARDTS
 
   $('#arrondissement').select2({
+    placeholder: "Select a State",
     maximumSelectionLength: 3,
     closeOnSelect: false,
   });
@@ -118,6 +121,7 @@ $(document).ready(function() {
 
   // SURFACE
   $('#revetement').select2({
+    minimumResultsForSearch: -1,
     placeholder:'Choisir surface',
   });
 

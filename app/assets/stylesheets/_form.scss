@@ -5,7 +5,7 @@
 #form {
   background: white;
   border-radius: 3px;
-  margin-top: 50px
+  margin-top: 50px;
 }
 
 
@@ -13,54 +13,42 @@
 // WHERE
 //--------
 
-#form-where-visible {
-  position: relative;
-  top: 42px;
+#form-where {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.form-where-visible-option {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.form-where-option {
+  width: 30%;
+  padding: 10px;
   text-align: center;
-  border: 1px solid;
+  border: 1px solid $green;
   border-radius: 3px;
-  padding-left: 0px;
-  padding-right: 0px;
-  margin: 0 10px;
-  background: $white;
   &:hover, &:active, &:focus {
     text-decoration: none;
   }
 }
 
-.form-where-visible-option-selected {
+.form-where-option-selected {
+  color: $white;
   background: $green;
-  color: white;
   &:hover, &:active, &:focus {
+    color: $white;
     text-decoration: none;
-    color: white;
   }
 }
 
-.form-where-hidden-option {
-  z-index: -1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 0px;
-  padding-bottom: 0px;
+// COMMON TO ALL SELECT
+.select2-results__option--highlighted {
+  background: $green !important;
 }
 
-.form-where-hidden-option-visible {
-  z-index: 1;
+.select2-selection__placeholder {
+  color: $green !important;
 }
 
 // SELECT TENNIS
-#tennisArrond + span.select2-container {
-  width: 100% !important;
-}
-
 #tennisArrond + span .select2-selection--single {
   display: flex;
   align-items: center;
@@ -75,10 +63,6 @@
 }
 
 // SELECT ARDTS
-#arrondissement + span.select2-container {
-  width: 100% !important;
-}
-
 #arrondissement + span .select2-selection--multiple {
   display: flex;
   align-items: center;
@@ -107,25 +91,26 @@
 // WHEN
 //--------
 
-// DATE
-#form-date {
+#form-date, #form-hour {
   margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
-.form-date-option {
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
+.form-date-option, .form-hour-option {
+  padding: 20px 30px;
   text-align: center;
   &:hover, &:active, &:focus {
     text-decoration: none;
   }
+  p {
+    margin: 0px;
+  }
 }
 
-.form-date-option p {
-  margin: 0px;
-}
-
-.form-date-option-selected {
+.form-date-option-selected, .form-hour-option-selected {
   color: white;
   background: $green;
   border-radius: 3px;
@@ -135,32 +120,16 @@
   }
 }
 
-// HOUR
-.form-hour-option {
-  padding-top: 20px !important;
-  padding-bottom: 20px !important;
-  text-align: center;
-  &:hover, &:active, &:focus {
-    text-decoration: none;
-  }
-}
-
-.form-hour-option-selected {
-  background: $green;
-  color: white;
-  &:hover, &:active, &:focus {
-    text-decoration: none;
-    color: white;
-  }
-}
-
 //--------
-// MORE
+// MORE OPTIONS
 //--------
 
 #form-more {
   margin-top: 25px;
   margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 // CHECKBOX
@@ -175,24 +144,15 @@
 
 // SURFACE
 #revetement + span.select2-container {
-  width: 100% !important;
+  min-width: 180px;
 }
 
 #revetement + span .select2-selection--single {
   border: 1px solid $green;
 }
 
-#revetement + span .select2-selection__placeholder {
-  color: $black;
-}
-
 #revetement + span .select2-selection__rendered {
   color: $green;
-}
-
-#revetement + span .select2-selection__rendered-selected {
-  color: $white;
-  background: $green;
 }
 
 //--------
@@ -206,11 +166,13 @@
 
 #form-submit-button {
   text-align: center;
+  color: $white;
+  background: $green;
+  border: 1px solid $green;
+  border-radius: 3px;
   height: 60%;
   width: 100%;
 }
-
-
 
 
 
