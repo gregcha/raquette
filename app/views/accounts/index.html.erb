@@ -1,32 +1,22 @@
-<div class="accounts-wrapper">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-10 col-xs-offset-1">
-        <div class="top-links">
-          <%= link_to 'Retour', page_path('home'), class:'btn-medium button-left' %>
-          <%= link_to 'Ajouter un compte', new_account_path, class:'btn-treehouse button-right' %>
-        </div>
-        <div class="page-title">
-          <h3>Mes comptes Paris Tennis</h3>
-        </div>
-        <% @accounts.each do |a| %>
-          <div class="account">
-            <div class='account-body'>
-              <h3><%= a.first_name + ' ' + a.last_name %></h3>
-              <p> <%= "Compte n° " + a.identifiant %></p>
-              <p> <%= a.email %></p>
-              <p> <%= "Crédits d'absence : " + a.coins.to_s %></p>
-              <p> <%= a.bookings.count == 0 ? 'Pas de réservation en cours' : '1 réservation en cours' %></p>
-            </div>
-            <ul class="list-inline venue-item-controls">
-              <%= link_to 'Supprimer', account_path(a), method: 'delete', class:'btn-medium button-left' %>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-    </div>
-  </div>
+
+<div class="top-links">
+  <%= link_to 'Retour', page_path('home'), class:'btn-medium button-left' %>
+  <%= link_to 'Ajouter un compte', new_account_path, class:'btn-treehouse button-right' %>
 </div>
 
+<% @accounts.each do |a| %>
+  <div class="account">
+    <div class='account-body'>
+      <h3><%= a.first_name + ' ' + a.last_name %></h3>
+      <p> <%= "Compte n° " + a.identifiant %></p>
+      <p> <%= a.email %></p>
+      <p> <%= "Crédits d'absence : " + a.coins.to_s %></p>
+      <p> <%= a.bookings.count == 0 ? 'Pas de réservation en cours' : '1 réservation en cours' %></p>
+    </div>
+    <ul class="list-inline venue-item-controls">
+      <%= link_to 'Supprimer', account_path(a), method: 'delete', class:'btn-medium button-left' %>
+    </ul>
+  </div>
+<% end %>
 
 <%= link_to 'Byebye', destroy_user_session_path, method: :delete, class:'btn-treehouse button-right' %>
