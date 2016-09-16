@@ -6,91 +6,93 @@
   <%# TODO %>
 <% end %>
 
-<div class='column is-half is-offset-one-quarter' id='form' >
-
+<div id='form' >
   <%= form_tag results_path do %>
 
     <!-- WHERE -->
-    <div id="form-where">
-      <a href="#a" class="form-where-option" id="form-where-all">
-        Tous les arrondissements
+    <div class='form-area' id="form-where">
+      <h2>Où jouer ?</h2>
+      <div id="form-where-options">
         <%= check_box_tag :tousArrondissements, 'yes', false, class:'is-hidden' %>
-      </a>
-
-      <%= select_tag :tennisArrond,
-        "<option disabled value='Amandiers@20'>Amandiers</option>
-        <option value='Atlantique@15'>Atlantique</option>
-        <option value='Aurelle de Paladines@17'>Aurelle de Paladines</option>
-        <option value='Bertrand Dauvin@18'>Bertrand Dauvin</option>
-        <option value='Candie@11'>Candie</option>
-        <option value='Carnot@12'>Carnot</option>
-        <option value='Championnet@18'>Championnet</option>
-        <option value='Château des Rentiers@13'>Château des Rentiers</option>
-        <option value='Cordelières@13'>Cordelières</option>
-        <option value='Courcelles@17'>Courcelles</option>
-        <option value='Croix Nivert@15'>Croix Nivert</option>
-        <option disabled value='Davout@20'>Davout</option>
-        <option value='Docteurs Déjerine@20'>Docteurs Déjerine</option>
-        <option value='Dunois@13'>Dunois</option>
-        <option value='Edouard Pailleron@19'>Edouard Pailleron</option>
-        <option value='Elisabeth@14'>Elisabeth</option>
-        <option disabled value='Fonds des Princes@16'>Fonds des Princes</option>
-        <option value='Georges Carpentier@13'>Georges Carpentier</option>
-        <option value='Henry de Montherlant@16'>Henry de Montherlant</option>
-        <option value='Jandelle@19'>Jandelle</option>
-        <option value='Jules Ladoumègue@19'>Jules Ladoumègue</option>
-        <option value='La Faluère@12'>La Faluère</option>
-        <option value='Louis Lumière@20'>Louis Lumière</option>
-        <option disabled value='Luxembourg@6'>Luxembourg</option>
-        <option value='Léo Lagrange@12'>Léo Lagrange</option>
-        <option value='Max Rousié@17'>Max Rousié</option>
-        <option value='Moureu - Baudricourt@13'>Moureu - Baudricourt</option>
-        <option value='Neuve Saint Pierre@4'>Neuve Saint Pierre</option>
-        <option value='Niox@16'>Niox</option>
-        <option value='Paul Barruel@15'>Paul Barruel</option>
-        <option value='Paul Valéry@12'>Paul Valéry</option>
-        <option value='Philippe Auguste@11'>Philippe Auguste</option>
-        <option value='Poissonniers@18'>Poissonniers</option>
-        <option value='Poliveau@5'>Poliveau</option>
-        <option value='Porte de Bagnolet@20'>Porte de Bagnolet</option>
-        <option value='Poterne des Peupliers@13'>Poterne des Peupliers</option>
-        <option value='Reims - Asnières@17'>Reims - Asnières</option>
-        <option value='René et André Mourlon@15'>René et André Mourlon</option>
-        <option value='Rigoulot - La Plaine@15'>Rigoulot - La Plaine</option>
-        <option value='Sablonnière@15'>Sablonnière</option>
-        <option value='Sept Arpents@19'>Sept Arpents</option>
-        <option value='Suzanne Lenglen@15'>Suzanne Lenglen</option>
-        <option value='Thiéré@11'>Thiéré</option>".html_safe, class:'form-where-option' %>
-
-      <%= select_tag :arrondissement,
-        "<option value='4'>4</option>
-        <option value='5'>5</option>
-        <option value='6'>6</option>
-        <option value='11'>11</option>
-        <option value='12'>12</option>
-        <option value='13'>13</option>
-        <option value='14'>14</option>
-        <option value='15'>15</option>
-        <option value='16'>16</option>
-        <option value='17'>17</option>
-        <option value='18'>18</option>
-        <option value='19'>19</option>
-        <option value='20'>20</option>".html_safe, multiple: true, class:'form-where-option' %>
+        <%= select_tag :tennisArrond,
+          "<option value='all'>Tout Paris</option>
+          <option disabled value='Amandiers@20'>Amandiers</option>
+          <option value='Atlantique@15'>Atlantique</option>
+          <option value='Aurelle de Paladines@17'>Aurelle de Paladines</option>
+          <option value='Bertrand Dauvin@18'>Bertrand Dauvin</option>
+          <option value='Candie@11'>Candie</option>
+          <option value='Carnot@12'>Carnot</option>
+          <option value='Championnet@18'>Championnet</option>
+          <option value='Château des Rentiers@13'>Château des Rentiers</option>
+          <option value='Cordelières@13'>Cordelières</option>
+          <option value='Courcelles@17'>Courcelles</option>
+          <option value='Croix Nivert@15'>Croix Nivert</option>
+          <option disabled value='Davout@20'>Davout</option>
+          <option value='Docteurs Déjerine@20'>Docteurs Déjerine</option>
+          <option value='Dunois@13'>Dunois</option>
+          <option value='Edouard Pailleron@19'>Edouard Pailleron</option>
+          <option value='Elisabeth@14'>Elisabeth</option>
+          <option disabled value='Fonds des Princes@16'>Fonds des Princes</option>
+          <option value='Georges Carpentier@13'>Georges Carpentier</option>
+          <option value='Henry de Montherlant@16'>Henry de Montherlant</option>
+          <option value='Jandelle@19'>Jandelle</option>
+          <option value='Jules Ladoumègue@19'>Jules Ladoumègue</option>
+          <option value='La Faluère@12'>La Faluère</option>
+          <option value='Louis Lumière@20'>Louis Lumière</option>
+          <option disabled value='Luxembourg@6'>Luxembourg</option>
+          <option value='Léo Lagrange@12'>Léo Lagrange</option>
+          <option value='Max Rousié@17'>Max Rousié</option>
+          <option value='Moureu - Baudricourt@13'>Moureu - Baudricourt</option>
+          <option value='Neuve Saint Pierre@4'>Neuve Saint Pierre</option>
+          <option value='Niox@16'>Niox</option>
+          <option value='Paul Barruel@15'>Paul Barruel</option>
+          <option value='Paul Valéry@12'>Paul Valéry</option>
+          <option value='Philippe Auguste@11'>Philippe Auguste</option>
+          <option value='Poissonniers@18'>Poissonniers</option>
+          <option value='Poliveau@5'>Poliveau</option>
+          <option value='Porte de Bagnolet@20'>Porte de Bagnolet</option>
+          <option value='Poterne des Peupliers@13'>Poterne des Peupliers</option>
+          <option value='Reims - Asnières@17'>Reims - Asnières</option>
+          <option value='René et André Mourlon@15'>René et André Mourlon</option>
+          <option value='Rigoulot - La Plaine@15'>Rigoulot - La Plaine</option>
+          <option value='Sablonnière@15'>Sablonnière</option>
+          <option value='Sept Arpents@19'>Sept Arpents</option>
+          <option value='Suzanne Lenglen@15'>Suzanne Lenglen</option>
+          <option value='Thiéré@11'>Thiéré</option>".html_safe, class:'form-where-option' %>
+        <span id='form-where-separator'>OU</span>
+        <%= select_tag :arrondissement,
+          "<option value='all'>Tout Paris</option>
+          <option value='4'>4</option>
+          <option value='5'>5</option>
+          <option value='6'>6</option>
+          <option value='11'>11</option>
+          <option value='12'>12</option>
+          <option value='13'>13</option>
+          <option value='14'>14</option>
+          <option value='15'>15</option>
+          <option value='16'>16</option>
+          <option value='17'>17</option>
+          <option value='18'>18</option>
+          <option value='19'>19</option>
+          <option value='20'>20</option>".html_safe, multiple: true, class:'form-where-option' %>
+      </div>
     </div>
 
-    <!-- DATE -->
-    <div id="form-date">
-      <% @week_days.each_with_index do |day, index| %>
-        <a href="#a" class="form-date-option" id="<%= day[1] + '/' + day[2] + '/' + day[3]  %>">
-          <p><%= day[0] %></p>
-          <p><%= day[1] %></p>
-        </a>
-      <% end %>
-      <%= hidden_field_tag :dateDispo%>
-    </div>
-
-    <!-- HOUR -->
-    <div id="form-hour">
+    <!-- WHEN -->
+    <div class='form-area' id="form-when">
+      <h2>Quand jouer ?</h2>
+      <!-- DATE -->
+      <div id="form-date">
+        <% @week_days.each_with_index do |day, index| %>
+          <a href="#a" class="form-date-option" id="<%= day[1] + '/' + day[2] + '/' + day[3]  %>">
+            <p><%= day[0] %></p>
+            <p><%= day[1] %></p>
+          </a>
+        <% end %>
+        <%= hidden_field_tag :dateDispo%>
+      </div>
+      <!-- HOUR -->
+      <div id="form-hour">
         <a href="#a" class="form-hour-option" id="8@12">
           Matin (8h-12h)
         </a>
@@ -103,61 +105,58 @@
         <a href="#a" class="form-hour-option" id="18@21">
           Soirée (18h-21h)
         </a>
-      <%= hidden_field_tag :plageHoraireDispo%>
+        <%= hidden_field_tag :plageHoraireDispo%>
+      </div>
     </div>
 
     <!-- MORE OPTIONS -->
-    <div id="form-more">
-
-      <!-- COUVERT -->
-      <div class="form-more-checkbox" id="form-more-checkbox-couvert">
-        <label class="tgl" id='tgl_bgd_couvert'>
-          <input type="checkbox" />
-          <span class="tgl_body">
-            <span class="tgl_switch"></span>
-            <span class="tgl_track">
-              <span class="tgl_bgd tgl_bgd_couvert"></span>
-              <span class="tgl_bgd tgl_bgd_couvert tgl_bgd-negative"></span>
+    <div class='form-area' id="form-more-options">
+      <h2>Plus d'options</h2>
+      <div id="form-more-options-options">
+        <!-- COUVERT -->
+        <div class="form-more-checkbox" id="form-more-checkbox-couvert">
+          <label class="tgl" id='tgl_bgd_couvert'>
+            <input type="checkbox" />
+            <span class="tgl_body">
+              <span class="tgl_switch"></span>
+              <span class="tgl_track">
+                <span class="tgl_bgd tgl_bgd_couvert"></span>
+                <span class="tgl_bgd tgl_bgd_couvert tgl_bgd-negative"></span>
+              </span>
             </span>
-          </span>
-        </label>
-        <div>Court couvert</div>
-        <%= check_box_tag :courtCouvert, 'yes', false, class:'is-hidden' %>
-      </div>
-
-      <!-- ECLAIRE -->
-      <div class="form-more-checkbox" id="form-more-checkbox-eclaire">
-        <label class="tgl" id='tgl_bgd_eclaire'>
-          <input type="checkbox" />
-          <span class="tgl_body">
-            <span class="tgl_switch"></span>
-            <span class="tgl_track">
-              <span class="tgl_bgd tgl_bgd_eclaire"></span>
-              <span class="tgl_bgd tgl_bgd_eclaire tgl_bgd-negative"></span>
+          </label>
+          <div>Court couvert</div>
+          <%= check_box_tag :courtCouvert, 'yes', false, class:'is-hidden' %>
+        </div>
+        <!-- ECLAIRE -->
+        <div class="form-more-checkbox" id="form-more-checkbox-eclaire">
+          <label class="tgl" id='tgl_bgd_eclaire'>
+            <input type="checkbox" />
+            <span class="tgl_body">
+              <span class="tgl_switch"></span>
+              <span class="tgl_track">
+                <span class="tgl_bgd tgl_bgd_eclaire"></span>
+                <span class="tgl_bgd tgl_bgd_eclaire tgl_bgd-negative"></span>
+              </span>
             </span>
-          </span>
-        </label>
-        <div>Court éclairé</div>
-        <%= check_box_tag :courtEclaire, 'yes', false, class:'is-hidden' %>
+          </label>
+          <div>Court éclairé</div>
+          <%= check_box_tag :courtEclaire, 'yes', false, class:'is-hidden' %>
+        </div>
+        <!-- SURFACE -->
+        <%= select_tag :revetement,
+          "<option></option>
+          <option value='Béton poreux'>Béton poreux</option>
+          <option value='Bitume'>Bitume</option>
+          <option value='Gazon synthétique'>Gazon synthétique</option>
+          <option value='Résine'>Résine</option>
+          <option value='Synthétique'>Synthétique</option>
+          <option value='Terre battue'>Terre battue</option>".html_safe %>
       </div>
-
-      <!-- SURFACE -->
-      <%= select_tag :revetement,
-        "<option></option>
-        <option value='Béton poreux'>Béton poreux</option>
-        <option value='Bitume'>Bitume</option>
-        <option value='Gazon synthétique'>Gazon synthétique</option>
-        <option value='Résine'>Résine</option>
-        <option value='Synthétique'>Synthétique</option>
-        <option value='Terre battue'>Terre battue</option>".html_safe %>
-
     </div>
 
     <!-- SUBMIT -->
-    <div id="form-submit">
-      <%= submit_tag "Rechercher", id:'form-submit-button'  %>
-    </div>
+    <%= submit_tag "Rechercher", id:'form-submit-button'  %>
 
   <% end %>
-
 </div>

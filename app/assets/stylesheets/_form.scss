@@ -5,47 +5,62 @@
 #form {
   background: white;
   border-radius: 3px;
-  margin-top: 50px;
+  margin: auto;
+  max-width: 720px;
 }
-
 
 //--------
 // WHERE
 //--------
 
+.form-area {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  h2 {
+    color: $green;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 16px;
+  }
+}
+
 #form-where {
+  height: 160px;
+  padding: 30px;
+}
+
+#form-where-options {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
 }
 
 .form-where-option {
-  width: 30%;
-  padding: 10px;
-  text-align: center;
-  border: 1px solid $green;
-  border-radius: 3px;
-  &:hover, &:active, &:focus {
-    text-decoration: none;
-  }
+  width: 45%;
 }
 
-.form-where-option-selected {
-  color: $white;
-  background: $green;
-  &:hover, &:active, &:focus {
-    color: $white;
-    text-decoration: none;
-  }
+#form-where-separator {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 400;
+  color: $green;
 }
 
 // COMMON TO ALL SELECT
 .select2-results__option--highlighted {
-  background: $green !important;
+  background: $blue-dark !important;
 }
 
 .select2-selection__placeholder {
-  color: $green !important;
+  color: $blue-dark !important;
+}
+
+.select2-dropdown {
+  border: 1px solid $grey-lighter;
 }
 
 // SELECT TENNIS
@@ -55,11 +70,20 @@
   min-height: 42px;
   max-height: 42px;
   overflow-y: auto;
+  border: 1px solid $grey-lighter;
 }
 
 #tennisArrond + span .select2-selection__arrow {
   top: 8px;
   right: 10px;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__arrow b {
+  border-color: $blue-dark transparent transparent transparent;
+}
+
+.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
+  border-color: transparent transparent $blue-dark transparent;
 }
 
 // SELECT ARDTS
@@ -91,45 +115,54 @@
 // WHEN
 //--------
 
+#form-when {
+  height: 220px;
+  padding: 30px 15px;
+}
+
 #form-date, #form-hour {
-  margin-top: 20px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  width: 100%;
 }
 
 .form-date-option, .form-hour-option {
-  padding: 20px 30px;
+  color: $blue-dark;
+  padding: 10px 20px;
   text-align: center;
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, &:visited {
     text-decoration: none;
+    background: $grey-lighter;
   }
   p {
-    margin: 0px;
+    margin: 0;
   }
 }
 
 .form-date-option-selected, .form-hour-option-selected {
-  color: white;
-  background: $green;
+  background: $grey-lighter;
   border-radius: 3px;
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, &:visited {
     text-decoration: none;
-    color: white;
+    background: $grey-lighter;
   }
 }
 
 //--------
 // MORE OPTIONS
 //--------
+#form-more-options {
+  height: 160px;
+  padding: 30px;
+}
 
-#form-more {
-  margin-top: 25px;
-  margin-bottom: 50px;
+#form-more-options-options {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 100%;
 }
 
 // CHECKBOX
@@ -137,7 +170,7 @@
   display: flex;
   align-items: center;
   align-items: left;
-  &:hover, &:active, &:focus {
+  &:hover, &:active, &:focus, &:visited {
     text-decoration: none;
   }
 }
@@ -159,18 +192,16 @@
 // SUBMIT
 //--------
 
-#form-submit {
-  height: 100px;
-  width: 100%;
-}
-
 #form-submit-button {
-  text-align: center;
   color: $white;
   background: $green;
   border: 1px solid $green;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: 900;
+  font-size: 20px;
   border-radius: 3px;
-  height: 60%;
+  height: 50px;
   width: 100%;
 }
 

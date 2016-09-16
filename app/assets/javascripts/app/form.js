@@ -19,6 +19,7 @@ $(document).ready(function() {
   // SELECT TENNIS
 
   $('#tennisArrond').select2({
+    minimumResultsForSearch: -1,
     placeholder:'Choisir tennis',
   });
   $("#tennisArrond").select2("val", "[]");
