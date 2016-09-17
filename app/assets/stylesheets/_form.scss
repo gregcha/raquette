@@ -4,19 +4,18 @@
 
 #form {
   background: white;
-  border-radius: 3px;
+  border-radius: 6px;
   margin: auto;
   max-width: 720px;
-  padding: 30px;
+  padding: 50px 30px;
   box-shadow: 4px 6.928px 28.5px 1.5px rgba(0,0,0,0.18);
 }
 
 .form-area {
   display: flex;
   flex-flow: row nowrap;
-  align-items: space-around;
   justify-content: space-between;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
   .form-area-intro {
     display: flex;
     justify-content: flex-start;
@@ -43,7 +42,7 @@
   width: 100%;
   border: 2px solid $grey-white;
   border-radius: 6px;
-  &:before{
+  &:before {
     border-radius: 6px;
     content: '';
     position: absolute;
@@ -144,11 +143,18 @@
 }
 
 #arrondissement + span .select2-selection--multiple .select2-selection__choice {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   color: white;
   font-weight: bold;
-  background: $green;
-  border: 2px solid white;
-  margin-top: 0px;
+  background: $blue-dark;
+  border: 1px solid white;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 2px 7px;
+  margin: 0;
+  margin-left: 5px;
 }
 
 #arrondissement + span .select2-selection--multiple .select2-selection__choice__remove {
@@ -163,10 +169,6 @@
 // WHEN
 //--------
 
-// #form-date, #form-hour {
-//   height: 80px;
-// }
-
 #form-date-options, #form-hour-options {
   display: flex;
   align-items: center;
@@ -179,9 +181,9 @@
   color: $blue-dark;
   padding: 10px 20px;
   text-align: center;
+  border-radius: 6px;
   &:hover, &:active, &:focus, &:visited {
     text-decoration: none;
-    background: $grey-lighter;
   }
   p {
     font-size: 16px;
@@ -196,11 +198,18 @@
 }
 
 .form-date-option-selected, .form-hour-option-selected {
-  background: $grey-lighter;
-  border-radius: 3px;
-  &:hover, &:active, &:focus, &:visited {
-    text-decoration: none;
-    background: $grey-lighter;
+  position: relative;
+  box-shadow: inset 0 0 0 2px $grey-white;
+  &:before {
+    content: '';
+    position: absolute;
+    background: $grey-light;
+    opacity: .075;
+    top: 5px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
   }
 }
 
@@ -260,8 +269,7 @@
   select {
     width: 100%;
   }
-  &:before{
-    border-radius: 6px;
+  &:before {
     content: '';
     position: absolute;
     background: $grey-light;
@@ -272,6 +280,10 @@
     height: 100%;
     border-radius: 6px;
   }
+}
+
+.form-select-selected {
+  background: $green;
 }
 
 
@@ -291,18 +303,34 @@
 // SUBMIT
 //--------
 
-#form-submit-button {
-  color: $white;
-  background: $green;
-  border: 1px solid $green;
-  text-transform: uppercase;
-  text-align: center;
-  font-weight: 900;
-  font-size: 20px;
-  border-radius: 3px;
+#form-submit {
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   height: 50px;
   width: 100%;
+  border: 2px solid $green;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: 20px;
+  color: $green;
+  & i {
+    margin-right: 5px;
+  }
+  &:before {
+    content: '';
+    position: absolute;
+    background: $green;
+    opacity: .075;
+    top: 5px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
 }
-
 
 

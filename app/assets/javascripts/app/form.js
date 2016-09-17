@@ -13,6 +13,7 @@ $(document).ready(function() {
   $("#tennisArrond").select2("val", "[]");
 
   $('#form-where-tennis').click(function() {
+    $("#tennisArrond").select2("val", "[]");
     $('#tennisArrond').select2('open');
     $('#form-where-tennis a').html('Choisir un tennis <i class="fa fa-caret-up" aria-hidden="true"></i>');
     $('#form-where-ardts a').html('3 arrondissements max <i class="fa fa-caret-down" aria-hidden="true"></i>');
@@ -25,6 +26,17 @@ $(document).ready(function() {
     var data = $('#tennisArrond').select2('data');
     $('#form-where-tennis a').html(data[0]['text']);
     $("#form-where-tennis a").addClass('form-where-option-selected');
+  });
+
+  $('#tennisArrond').on("select2:close", function(e) {
+    var tennisArrond = $('#tennisArrond').select2('val');
+    var arrondissement = $('#arrondissement').select2('val');
+    if (tennisArrond == null) {
+      $('#form-where-tennis a').html('Choisir un tennis <i class="fa fa-caret-down" aria-hidden="true"></i>');
+      if (arrondissement == null) {
+        $("#tousArrondissements").prop('checked', true);
+      }
+    }
   });
 
 
@@ -49,6 +61,18 @@ $(document).ready(function() {
     if ($("#arrondissement").select2("val").length > 2) {
       $('#arrondissement').select2('close');
     };
+  });
+
+  $('#arrondissement').on("select2:close", function(e) {
+    var arrondissement = $('#arrondissement').select2('val');
+    var tennisArrond = $('#tennisArrond').select2('val');
+    if (arrondissement == null) {
+      $('#form-where-ardts a').html('3 arrondissements max <i class="fa fa-caret-down" aria-hidden="true"></i>');
+      $('#form-where-ardts a').show();
+      if (tennisArrond == null) {
+        $("#tousArrondissements").prop('checked', true);
+      }
+    }
   });
 
   //--------
@@ -111,8 +135,37 @@ $(document).ready(function() {
   // SURFACE
   $('#revetement').select2({
     minimumResultsForSearch: -1,
-    placeholder:'Choisir surface',
   });
+
+  $('#form-prefs-surface').click(function() {
+    $("#revetement").select2("val", "[]");
+    $('#revetement').select2('open');
+    $('#form-prefs-surface a').html('surface <i class="fa fa-caret-up" aria-hidden="true"></i>');
+  });
+
+  $('#revetement').on("select2:select", function(e) {
+    var data = $('#revetement').select2('data');
+    $('#form-prefs-surface a').html(data[0]['text']);
+    $("#form-prefs-surface").addClass('form-select-selected');
+  });
+
+  $('#revetement').on("select2:close", function(e) {
+    var data = $('#revetement').select2('val');
+    if (data == null) {
+      $('#form-prefs-surface a').html('surface <i class="fa fa-caret-down" aria-hidden="true"></i>');
+    }
+  });
+
+  //--------
+  // SUBMIT
+  //--------
+
+  $('#form-submit').click(function() {
+    console.log('ououou');
+    $("#form-submit-button").click();
+  });
+
+
 
 });
 

@@ -177,8 +177,7 @@
         <!-- SURFACE -->
         <div id="form-prefs-surface">
           <%= select_tag :revetement,
-            "<option></option>
-            <option value='Béton poreux'>Béton poreux</option>
+            "<option value='Béton poreux'>Béton poreux</option>
             <option value='Bitume'>Bitume</option>
             <option value='Gazon synthétique'>Gazon synthétique</option>
             <option value='Résine'>Résine</option>
@@ -193,7 +192,11 @@
     </div>
 
     <!-- SUBMIT -->
-    <%= submit_tag "Rechercher", id:'form-submit-button'  %>
+    <a href="#a" id='form-submit'>
+      <i class="fa fa-search" aria-hidden="true"></i>
+      Rechercher
+    </a>
+    <%= submit_tag "Rechercher", class:'is-hidden', id:'form-submit-button'%>
 
   <% end %>
 </div>

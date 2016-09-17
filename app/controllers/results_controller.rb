@@ -15,6 +15,7 @@ class ResultsController < ApplicationController
   end
 
   def create
+    raise
     previous_results = Result.where(user_id: current_user.id)
     previous_results.destroy_all if previous_results
 
