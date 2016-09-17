@@ -11,12 +11,16 @@
 
     <!-- WHERE -->
     <div class='form-area' id="form-where">
-      <h2>Où jouer ?</h2>
+      <div class='form-area-intro'>
+        <%= image_tag "where.svg" %>
+      </div>
+      <div id="form-where-options-overlay">
+
+      </div>
       <div id="form-where-options">
-        <%= check_box_tag :tousArrondissements, 'yes', false, class:'is-hidden' %>
+        <%= check_box_tag :tousArrondissements, 'yes', true, class:'is-hidden' %>
         <%= select_tag :tennisArrond,
-          "<option value='all'>Tout Paris</option>
-          <option disabled value='Amandiers@20'>Amandiers</option>
+          "<option disabled value='Amandiers@20'>Amandiers</option>
           <option value='Atlantique@15'>Atlantique</option>
           <option value='Aurelle de Paladines@17'>Aurelle de Paladines</option>
           <option value='Bertrand Dauvin@18'>Bertrand Dauvin</option>
@@ -61,8 +65,7 @@
           <option value='Thiéré@11'>Thiéré</option>".html_safe, class:'form-where-option' %>
         <span id='form-where-separator'>OU</span>
         <%= select_tag :arrondissement,
-          "<option value='all'>Tout Paris</option>
-          <option value='4'>4</option>
+          "<option value='4'>4</option>
           <option value='5'>5</option>
           <option value='6'>6</option>
           <option value='11'>11</option>
@@ -78,43 +81,57 @@
       </div>
     </div>
 
-    <!-- WHEN -->
-    <div class='form-area' id="form-when">
-      <h2>Quand jouer ?</h2>
-      <!-- DATE -->
-      <div id="form-date">
+
+    <!-- DATE -->
+    <div class='form-area' id="form-date">
+      <div class='form-area-intro'>
+        <%= image_tag "date.svg" %>
+      </div>
+      <div id="form-date-options">
         <% @week_days.each_with_index do |day, index| %>
           <a href="#a" class="form-date-option" id="<%= day[1] + '/' + day[2] + '/' + day[3]  %>">
             <p><%= day[0] %></p>
-            <p><%= day[1] %></p>
+            <span><%= day[1] %></span>
           </a>
         <% end %>
         <%= hidden_field_tag :dateDispo%>
       </div>
-      <!-- HOUR -->
-      <div id="form-hour">
+    </div>
+
+    <!-- HOUR -->
+    <div class='form-area' id="form-hour">
+      <div class='form-area-intro'>
+        <%= image_tag "hour.svg" %>
+      </div>
+      <div id="form-hour-options">
         <a href="#a" class="form-hour-option" id="8@12">
-          Matin (8h-12h)
+          <p>matin</p>
+          <span>8h-12h</span>
         </a>
         <a href="#a" class="form-hour-option" id="12@14">
-          Midi (12h-14h)
+          <p>midi</p>
+          <span>12h-14h</span>
         </a>
         <a href="#a" class="form-hour-option" id="14@18">
-          Après-midi (14h-18h)
+          <p>après-midi</p>
+          <span>14h-18h</span>
         </a>
         <a href="#a" class="form-hour-option" id="18@21">
-          Soirée (18h-21h)
+          <p>soirée</p>
+          <span>18h-21h</span>
         </a>
         <%= hidden_field_tag :plageHoraireDispo%>
       </div>
     </div>
 
-    <!-- MORE OPTIONS -->
-    <div class='form-area' id="form-more-options">
-      <h2>Plus d'options</h2>
-      <div id="form-more-options-options">
+    <!-- PREFS -->
+    <div class='form-area' id="form-prefs">
+      <div class='form-area-intro'>
+        <%= image_tag "prefs.svg" %>
+      </div>
+      <div id="form-prefs-options">
         <!-- COUVERT -->
-        <div class="form-more-checkbox" id="form-more-checkbox-couvert">
+        <div class="form-prefs-checkbox" id="form-prefs-checkbox-couvert">
           <label class="tgl" id='tgl_bgd_couvert'>
             <input type="checkbox" />
             <span class="tgl_body">
@@ -129,7 +146,7 @@
           <%= check_box_tag :courtCouvert, 'yes', false, class:'is-hidden' %>
         </div>
         <!-- ECLAIRE -->
-        <div class="form-more-checkbox" id="form-more-checkbox-eclaire">
+        <div class="form-prefs-checkbox" id="form-prefs-checkbox-eclaire">
           <label class="tgl" id='tgl_bgd_eclaire'>
             <input type="checkbox" />
             <span class="tgl_body">

@@ -1,5 +1,5 @@
 .navbar {
-  background: $white;
+  background: $grey-white;
 }
 
 .navbar-contents {
@@ -12,7 +12,7 @@
 .navbar-item {
   color: $blue-dark;
   text-transform: uppercase;
-  font-weight: $weight-bold;
+  font-weight: 600;
   width: 17%;
   text-align: center;
 }
