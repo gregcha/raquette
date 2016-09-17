@@ -18,7 +18,7 @@ $switch-size: 30px;
 $anim-slight-bounce: cubic-bezier(0.34,1.61,0.7,1);
 $anim-speed-normal: 250ms;
 
-$border-color: #dadde1;
+$border-color: $grey-white;
 
 //   BASE
 // -------------------------------------
@@ -43,7 +43,7 @@ $border-color: #dadde1;
     width: $toggle-width;
     height: $toggle-height;
     background: white;
-    border: 1px solid $border-color;
+    border: 2px solid $border-color;
     display: inline-block;
     position: relative;
     border-radius: 50px;
@@ -56,10 +56,10 @@ $border-color: #dadde1;
     background-color: white;
     position: absolute;
     left: -1px;
-    top: -1px;
+    top: -2px;
     border-radius: 50%;
-    border: 1px solid darken($border-color, 5%);
-    @include box-shadow(0 2px 2px rgba(0,0,0,.13));
+    border: 2px solid darken($border-color, 2%);
+    // @include box-shadow(0 1px 1px rgba(0,0,0,.13));
     @include transition(left $anim-slight-bounce $anim-speed-normal, transform $anim-slight-bounce $anim-speed-normal);
     z-index: 1;
   }
@@ -76,33 +76,23 @@ $border-color: #dadde1;
 
   .tgl_bgd {
     position: absolute;
-    right: -10px; // 10 compensates for animation bounce
+    right: -13px; // 10 compensates for animation bounce
     top: 0;
     bottom: 0;
     width: $toggle-width - ($switch-size / 2) + 10; // 10 compensates for animation bounce
     @include transition(left $anim-slight-bounce $anim-speed-normal, right $anim-slight-bounce $anim-speed-normal);
-    background: $green url('http://petelada.com/images/toggle/tgl_check.png') center center no-repeat;
+    background: $green image-url('check.svg') center center no-repeat;
   }
-
-  // .tgl_bgd_couvert {
-  //   background: $green image-url('couvert.svg') center center no-repeat;
-  //   background-size: 16px;
-  // }
-
-  // .tgl_bgd_eclaire {
-  //   background: $green image-url('eclaire.svg') center center no-repeat;
-  //   background-size: 16px;
-  // }
 
   .tgl_bgd-negative {
     right: auto;
     left: -($toggle-width - ($switch-size / 2));
-    background: white url('http://petelada.com/images/toggle/tgl_x.png') center center no-repeat;
+    background: white image-url('nocheck.svg') center center no-repeat;
   }
 
   &:hover {
     .tgl_switch {
-      border-color: darken($border-color, 13%);
+      border-color: darken($border-color, 5%);
       @include transform(scale(1.06));
     }
   }

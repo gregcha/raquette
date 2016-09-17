@@ -5,59 +5,47 @@ $(document).ready(function() {
   // WHERE
   //--------
 
-  // SELECT ALL
-  $("#form-where-visible-all").on("click", function () {
-    $("#tousArrondissements").prop('checked', true);
-    $("#form-where-visible-all").addClass('form-where-visible-option-selected')
-    $("#form-where-visible-tennis").removeClass('form-where-visible-option-selected');
-    $("#tennisArrond").select2("val", "[]");
-    $('#form-where-visible-tennis').html('Choisir tennis');
-    $('#arrondissement').parent().removeClass('form-where-hidden-option-visible');
-    $("#arrondissement").select2("val", "[]");
-  });
-
   // SELECT TENNIS
 
   $('#tennisArrond').select2({
     minimumResultsForSearch: -1,
-    placeholder:'Choisir tennis',
   });
   $("#tennisArrond").select2("val", "[]");
 
-  $('#form-where-visible-tennis').click(function() {
+  $('#form-where-tennis').click(function() {
     $('#tennisArrond').select2('open');
+    $('#form-where-tennis a').html('Choisir un tennis <i class="fa fa-caret-up" aria-hidden="true"></i>');
+    $('#form-where-ardts a').html('3 arrondissements max <i class="fa fa-caret-down" aria-hidden="true"></i>');
+    $('#form-where-ardts a').show();
     $("#tousArrondissements").prop('checked', false);
-    $("#form-where-visible-all").removeClass('form-where-visible-option-selected');
-    $('#arrondissement').parent().removeClass('form-where-hidden-option-visible');
     $("#arrondissement").select2("val", "[]");
   });
 
   $('#tennisArrond').on("select2:select", function(e) {
     var data = $('#tennisArrond').select2('data');
-    $('#form-where-visible-tennis').html(data[0]['text']);
-    $("#form-where-visible-tennis").addClass('form-where-visible-option-selected');
+    $('#form-where-tennis a').html(data[0]['text']);
+    $("#form-where-tennis a").addClass('form-where-option-selected');
   });
 
 
   // SELECT ARDTS
 
   $('#arrondissement').select2({
-    placeholder: "Select a State",
     maximumSelectionLength: 3,
     closeOnSelect: false,
   });
 
-  $('#form-where-visible-ardt').click(function() {
+  $('#form-where-ardts').click(function() {
     $('#arrondissement').select2('open');
-    $('#arrondissement').parent().addClass('form-where-hidden-option-visible');
+    $('#form-where-ardts a').html('3 arrondissements max <i class="fa fa-caret-up" aria-hidden="true"></i>');
     $("#tousArrondissements").prop('checked', false);
-    $("#form-where-visible-all").removeClass('form-where-visible-option-selected');
-    $("#form-where-visible-tennis").removeClass('form-where-visible-option-selected');
     $("#tennisArrond").select2("val", "[]");
-    $('#form-where-visible-tennis').html('Choisir tennis');
+    $("#form-where-tennis a").removeClass('form-where-option-selected');
+    $('#form-where-tennis a').html('Choisir un tennis <i class="fa fa-caret-down" aria-hidden="true"></i>');
   });
 
   $('#arrondissement').on("select2:select", function(e) {
+    $('#form-where-ardts a').hide();
     if ($("#arrondissement").select2("val").length > 2) {
       $('#arrondissement').select2('close');
     };

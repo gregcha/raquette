@@ -16,7 +16,6 @@
   flex-flow: row nowrap;
   align-items: space-around;
   justify-content: space-between;
-  height: 80px;
   margin-bottom: 40px;
   .form-area-intro {
     display: flex;
@@ -33,39 +32,80 @@
 // WHERE
 //--------
 
-// #form-where {
-//   height: 80px;
-// }
+#form-where {
+}
 
 #form-where-options {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
+  border: 2px solid $grey-white;
+  border-radius: 6px;
+  &:before{
+    border-radius: 6px;
+    content: '';
+    position: absolute;
+    background: $grey-light;
+    opacity: .075;
+    top: 5px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
 }
 
 .form-where-option {
+  position: relative;
   width: 45%;
+  a {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: $blue-dark;
+    font-weight: 600;
+    background: $white;
+    border: 1px solid $white;
+    i {
+      font-size: 16px;
+      margin-left: 5px;
+    }
+  }
+  select {
+    width: 100%;
+  }
+}
+
+.form-where-option-selected {
+  background: $green;
 }
 
 #form-where-separator {
-  text-transform: uppercase;
-  font-size: 12px;
-  font-weight: 400;
+  z-index: +1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $white;
   color: $green;
+  font-weight: 600;
+  width: 10%;
+  height: 100%;
 }
 
 // COMMON TO ALL SELECT
 .select2-results__option--highlighted {
-  background: $blue-dark !important;
-}
-
-.select2-selection__placeholder {
-  color: $blue-dark !important;
+  background: $green !important;
 }
 
 .select2-dropdown {
-  border: 1px solid $grey-lighter;
+  border: 2px solid $grey-white;
 }
 
 // SELECT TENNIS
@@ -75,7 +115,8 @@
   min-height: 42px;
   max-height: 42px;
   overflow-y: auto;
-  border: 1px solid $grey-lighter;
+  border: none;
+  border-radius: none;
 }
 
 #tennisArrond + span .select2-selection__arrow {
@@ -98,6 +139,8 @@
   min-height: 42px;
   max-height: 42px;
   overflow-y: auto;
+  border: none;
+  border-radius: none;
 }
 
 #arrondissement + span .select2-selection--multiple .select2-selection__choice {
@@ -142,7 +185,7 @@
   }
   p {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     margin: 0;
   }
   span {
@@ -171,7 +214,7 @@
 #form-prefs-options {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-around;
   width: 100%;
 }
 
@@ -183,9 +226,55 @@
   &:hover, &:active, &:focus, &:visited {
     text-decoration: none;
   }
+  & div {
+    color: $blue-dark;
+    font-weight: 600;
+  }
 }
 
 // SURFACE
+
+#form-prefs-surface {
+  position: relative;
+  width: 33%;
+  border: 2px solid $grey-white;
+  border-radius: 6px;
+  a {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    color: $blue-dark;
+    font-weight: 600;
+    background: $white;
+    border: 1px solid $white;
+    i {
+      font-size: 16px;
+      margin-left: 5px;
+    }
+  }
+  select {
+    width: 100%;
+  }
+  &:before{
+    border-radius: 6px;
+    content: '';
+    position: absolute;
+    background: $grey-light;
+    opacity: .075;
+    top: 5px;
+    left: 10px;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+  }
+}
+
+
 #revetement + span.select2-container {
   min-width: 180px;
 }
