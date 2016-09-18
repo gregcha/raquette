@@ -1,25 +1,47 @@
 .navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background: $grey-white;
+  max-width: 720px;
+  height: 100px;
+  text-align: center;
+  margin: auto;
 }
 
-.navbar-contents {
-  height: 100px;
+.navbar-right {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  width: 350px;
 }
 
 .navbar-item {
   color: $blue-dark;
   text-transform: uppercase;
   font-weight: 600;
-  width: 17%;
   text-align: center;
 }
 
 .navbar-logo {
-  max-width: 50px;
-  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  p {
+    color: $blue-dark;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  img {
+    width: 25px;
+    margin: 0 3px;
+  }
+  span {
+    position: relative;
+    color: $green;
+    font-weight: 600;
+    font-size: 24px;
+  }
 }
 
 #navbar-reservation-count {

@@ -3,12 +3,12 @@
 //------------------------------------
 
 #form {
-  background: white;
+  position: relative;
+  background: $white;
   border-radius: 6px;
   margin: auto;
   max-width: 720px;
   padding: 50px 30px;
-  box-shadow: 4px 6.928px 28.5px 1.5px rgba(0,0,0,0.18);
 }
 
 .form-area {
@@ -43,7 +43,6 @@
   border: 2px solid $grey-white;
   border-radius: 6px;
   &:before {
-    border-radius: 6px;
     content: '';
     position: absolute;
     background: $grey-light;
@@ -105,6 +104,14 @@
 
 .select2-dropdown {
   border: 2px solid $grey-white;
+}
+
+.select2-dropdown--below {
+  text-align: center;
+}
+
+.select2-results__option {
+  color: $blue-dark;
 }
 
 // SELECT TENNIS
@@ -187,7 +194,7 @@
   }
   p {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     margin: 0;
   }
   span {
@@ -200,13 +207,14 @@
 .form-date-option-selected, .form-hour-option-selected {
   position: relative;
   box-shadow: inset 0 0 0 2px $grey-white;
+  background: $white;
   &:before {
     content: '';
     position: absolute;
     background: $grey-light;
     opacity: .075;
     top: 5px;
-    left: 10px;
+    left: 5px;
     width: 100%;
     height: 100%;
     border-radius: 6px;
@@ -237,7 +245,7 @@
   }
   & div {
     color: $blue-dark;
-    font-weight: 600;
+    font-weight: 500;
   }
 }
 
@@ -258,7 +266,7 @@
     height: 100%;
     padding: 10px;
     color: $blue-dark;
-    font-weight: 600;
+    font-weight: 500;
     background: $white;
     border: 1px solid $white;
     i {
@@ -311,14 +319,15 @@
   justify-content: center;
   height: 50px;
   width: 100%;
-  border: 2px solid $green;
+  color: $blue-dark;
+  background: $green;
   border-radius: 6px;
   text-transform: uppercase;
-  font-weight: 900;
-  font-size: 20px;
-  color: $green;
-  & i {
-    margin-right: 5px;
+  font-weight: 600;
+  font-size: 18px;
+  text-shadow: 2px 2px 2px rgba(34, 32, 81, 0.3);
+  i {
+    margin-right: 10px;
   }
   &:before {
     content: '';
