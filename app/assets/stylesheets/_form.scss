@@ -97,81 +97,6 @@
   height: 100%;
 }
 
-// COMMON TO ALL SELECT
-.select2-results__option--highlighted {
-  background: $green !important;
-}
-
-.select2-dropdown {
-  border: 2px solid $grey-white;
-}
-
-.select2-dropdown--below {
-  text-align: center;
-}
-
-.select2-results__option {
-  color: $blue-dark;
-}
-
-// SELECT TENNIS
-#tennisArrond + span .select2-selection--single {
-  display: flex;
-  align-items: center;
-  min-height: 42px;
-  max-height: 42px;
-  overflow-y: auto;
-  border: none;
-  border-radius: none;
-}
-
-#tennisArrond + span .select2-selection__arrow {
-  top: 8px;
-  right: 10px;
-}
-
-.select2-container--default .select2-selection--single .select2-selection__arrow b {
-  border-color: $blue-dark transparent transparent transparent;
-}
-
-.select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b {
-  border-color: transparent transparent $blue-dark transparent;
-}
-
-// SELECT ARDTS
-#arrondissement + span .select2-selection--multiple {
-  display: flex;
-  align-items: center;
-  min-height: 42px;
-  max-height: 42px;
-  overflow-y: auto;
-  border: none;
-  border-radius: none;
-}
-
-#arrondissement + span .select2-selection--multiple .select2-selection__choice {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  color: white;
-  font-weight: bold;
-  background: $blue-dark;
-  border: 1px solid white;
-  border-radius: 6px;
-  font-size: 14px;
-  padding: 2px 7px;
-  margin: 0;
-  margin-left: 5px;
-}
-
-#arrondissement + span .select2-selection--multiple .select2-selection__choice__remove {
-  color: white;
-}
-
-#arrondissement + span .select2-selection--multiple .select2-search--inline {
-  display: none;
-}
-
 //--------
 // WHEN
 //--------
@@ -206,12 +131,12 @@
 
 .form-date-option-selected, .form-hour-option-selected {
   position: relative;
-  box-shadow: inset 0 0 0 2px $grey-white;
+  box-shadow: inset 0 0 0 2px $green;
   background: $white;
   &:before {
     content: '';
     position: absolute;
-    background: $grey-light;
+    background: $green;
     opacity: .075;
     top: 5px;
     left: 5px;
@@ -224,9 +149,6 @@
 //--------
 // PREFS
 //--------
-// #form-prefs {
-//   height: 70px;
-// }
 
 #form-prefs-options {
   display: flex;
@@ -250,7 +172,6 @@
 }
 
 // SURFACE
-
 #form-prefs-surface {
   position: relative;
   width: 33%;
@@ -290,23 +211,6 @@
   }
 }
 
-.form-select-selected {
-  background: $green;
-}
-
-
-#revetement + span.select2-container {
-  min-width: 180px;
-}
-
-#revetement + span .select2-selection--single {
-  border: 1px solid $green;
-}
-
-#revetement + span .select2-selection__rendered {
-  color: $green;
-}
-
 //--------
 // SUBMIT
 //--------
@@ -340,6 +244,68 @@
     height: 100%;
     border-radius: 6px;
   }
+}
+
+//--------
+// SELECT2
+//--------
+
+// COMMON TO ALL SELECT2
+.select2-results__option--highlighted {
+  background: $green !important;
+}
+
+.select2-dropdown {
+  border: 2px solid $grey-white;
+}
+
+.select2-dropdown--below {
+  text-align: center;
+}
+
+.select2-results__option {
+  color: $blue-dark;
+}
+
+// SELECT2 TENNIS
+#tennisArrond + span .select2-selection--single {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  max-height: 42px;
+  overflow-y: auto;
+  border: none;
+  border-radius: none;
+}
+
+// SELECT2 ARDTS
+#arrondissement + span .select2-selection--multiple {
+  display: flex;
+  align-items: center;
+  min-height: 42px;
+  max-height: 42px;
+  overflow-y: auto;
+  border: none;
+  border-radius: none;
+}
+
+#arrondissement + span .select2-selection--multiple .select2-selection__choice {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  color: white;
+  font-weight: bold;
+  background: $blue-dark;
+  border: 1px solid white;
+  border-radius: 6px;
+  font-size: 14px;
+  padding: 2px 7px;
+  margin: 0;
+  margin-left: 5px;
+}
+
+#arrondissement + span .select2-selection--multiple .select2-selection__choice__remove {
+  color: white;
 }
 
 

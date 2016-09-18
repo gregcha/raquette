@@ -2,7 +2,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: $grey-white;
   max-width: 720px;
   height: 100px;
   text-align: center;
@@ -17,7 +16,7 @@
 }
 
 .navbar-item {
-  color: $blue-dark;
+  color: #00A7E1;
   text-transform: uppercase;
   font-weight: 600;
   text-align: center;
@@ -28,12 +27,12 @@
   align-items: center;
   justify-content: center;
   p {
-    color: $blue-dark;
+    color: #00A7E1;
     font-weight: 600;
     font-size: 24px;
+    text-shadow: 2px 2px 2px rgba(34, 32, 81, 0.3);
   }
   img {
-    width: 25px;
     margin: 0 3px;
   }
   span {
@@ -41,6 +40,7 @@
     color: $green;
     font-weight: 600;
     font-size: 24px;
+    text-shadow: 2px 2px 2px rgba(78, 255, 187, 0.3);
   }
 }
 
