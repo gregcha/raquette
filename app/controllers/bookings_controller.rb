@@ -32,7 +32,6 @@ class BookingsController < ApplicationController
   end
 
   def create
-    raise
     account = Account.where(id: params[:account_id]).first
     login_paris_tennis(account.identifiant, account.password)
     query_page = @agent.get('https://teleservices.paris.fr/srtm/reservationCreneauInit.action')
